@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+    <link rel="stylesheet" href="css/style2.css">
+
+<style>
+
+:root {
+  --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-primary: "Amatic SC", sans-serif;
+  --font-secondary: "Inter", sans-serif;
+}
+
+/* Colors */
+:root {
+  --color-default: #212529;
+  --color-primary: #4286f3;
+  --color-secondary: #37373f;
+}
+
+/* Smooth scroll behavior */
+:root {
+  scroll-behavior: smooth;
+}
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+body {
+  font-family: var(--font-default);
+  color: var(--color-default);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ec2727;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-secondary);
+}
+
+
+
+
+
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+.header {
+  background: #fff;
+  transition: all 0.5s;
+  z-index: 997;
+  height: 90px;
+  
+}
+
+@media (max-width: 575px) {
+  .header {
+    height: 70px;
+  }
+}
+
+.header.sticked {
+  border-color: #fff;
+  border-color: #eee;
+}
+
+.header .logo img {
+  max-height: 40px;
+  margin-right: 6px;
+}
+
+.header .logo h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+  font-family: var(--font-secondary);
+}
+
+.header .logo h1 span {
+  color: var(--color-primary);
+}
+
+.header .btn-book-a-table,
+.header .btn-book-a-table:focus {
+  font-size: 14px;
+  color: #fff;
+  background: var(--color-primary);
+  padding: 8px 20px;
+  margin-left: 30px;
+  border-radius: 50px;
+  transition: 0.3s;
+}
+
+.header .btn-book-a-table:hover,
+.header .btn-book-a-table:focus:hover {
+  color: #fff;
+  background: rgba(206, 18, 18, 0.8);
+}
+
+section {
+  scroll-margin-top: 90px;
+}
+
+/*--------------------------------------------------------------
+# Desktop Navigation
+--------------------------------------------------------------*/
+@media (min-width: 1280px) {
+  .navbar {
+    padding: 0;
+  }
+
+  .navbar ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+  }
+
+  .navbar li {
+    position: relative;
+  }
+
+  .navbar>ul>li {
+    white-space: nowrap;
+    padding: 10px 0 10px 28px;
+  }
+
+  .navbar a,
+  .navbar a:focus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3px;
+    font-family: var(--font-secondary);
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    white-space: nowrap;
+    transition: 0.3s;
+    position: relative;
+  }
+
+  .navbar a i,
+  .navbar a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+  }
+
+  .navbar>ul>li>a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -6px;
+    left: 0;
+    background-color: var(--color-primary);
+    visibility: hidden;
+    width: 0px;
+    transition: all 0.3s ease-in-out 0s;
+  }
+
+  .navbar a:hover:before,
+  .navbar li:hover>a:before,
+  .navbar .active:before {
+    visibility: visible;
+    width: 100%;
+  }
+
+  .navbar a:hover,
+  .navbar .active,
+  .navbar .active:focus,
+  .navbar li:hover>a {
+    color: #4286f3;
+  }
+
+  .navbar .dropdown ul {
+    display: block;
+    position: absolute;
+    left: 28px;
+    top: calc(100% + 30px);
+    margin: 0;
+    padding: 10px 0;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    background: #000000;
+    box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+    transition: 0.3s;
+    border-radius: 4px;
+  }
+
+  .navbar .dropdown ul li {
+    min-width: 200px;
+  }
+
+  .navbar .dropdown ul a {
+    padding: 10px 20px;
+    font-size: 15px;
+    text-transform: none;
+    font-weight: 600;
+  }
+
+  .navbar .dropdown ul a i {
+    font-size: 12px;
+  }
+
+  .navbar .dropdown ul a:hover,
+  .navbar .dropdown ul .active:hover,
+  .navbar .dropdown ul li:hover>a {
+    color: var(--color-primary);
+  }
+
+  .navbar .dropdown:hover>ul {
+    opacity: 1;
+    top: 100%;
+    visibility: visible;
+  }
+
+  .navbar .dropdown .dropdown ul {
+    top: 0;
+    left: calc(100% - 30px);
+    visibility: hidden;
+  }
+
+  .navbar .dropdown .dropdown:hover>ul {
+    opacity: 1;
+    top: 0;
+    left: 100%;
+    visibility: visible;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1366px) {
+  .navbar .dropdown .dropdown ul {
+    left: -90%;
+  }
+
+  .navbar .dropdown .dropdown:hover>ul {
+    left: -100%;
+  }
+}
+
+@media (min-width: 1280px) {
+
+  .mobile-nav-show,
+  .mobile-nav-hide {
+    display: none;
+  }
+}
+
+/*--------------------------------------------------------------
+# Mobile Navigation
+--------------------------------------------------------------*/
+@media (max-width: 1279px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 400px;
+    border-left: 1px solid #666;
+    bottom: 0;
+    transition: 0.3s;
+    z-index: 9997;
+  }
+
+  .navbar ul {
+    position: absolute;
+    inset: 0;
+    padding: 50px 0 10px 0;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.9);
+    overflow-y: auto;
+    transition: 0.3s;
+    z-index: 9998;
+  }
+
+  .navbar a,
+  .navbar a:focus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    font-family: var(--font-secondary);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    font-weight: 600;
+    color: #7f7f90;
+    white-space: nowrap;
+    transition: 0.3s;
+  }
+
+  .navbar a i,
+  .navbar a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+  }
+
+  .navbar a:hover,
+  .navbar li:hover>a {
+    color: #000;
+  }
+
+  .navbar .active,
+  .navbar .active:focus {
+    color: #000;
+    border-color: var(--color-primary);
+  }
+
+  .navbar .dropdown ul,
+  .navbar .dropdown .dropdown ul {
+    position: static;
+    display: none;
+    padding: 10px 0;
+    margin: 10px 20px;
+    transition: all 0.5s ease-in-out;
+    border: 1px solid #eee;
+  }
+
+  .navbar .dropdown>.dropdown-active,
+  .navbar .dropdown .dropdown>.dropdown-active {
+    display: block;
+  }
+
+  .mobile-nav-show {
+    color: var(--color-secondary);
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 0;
+    transition: 0.5s;
+    z-index: 9999;
+    margin: 0 10px 0 20px;
+  }
+
+  .mobile-nav-hide {
+    color: var(--color-secondary);
+    font-size: 32px;
+    cursor: pointer;
+    line-height: 0;
+    transition: 0.5s;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    z-index: 9999;
+  }
+
+  .mobile-nav-active {
+    overflow: hidden;
+  }
+
+  .mobile-nav-active .navbar {
+    right: 0;
+  }
+
+  .mobile-nav-active .navbar:before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 9996;
+  }
+}
+
+.ag{border: 2px solid rgb(209, 209, 209);
+height: 90px;
+margin-top: 105px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.dp_swd{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.ft_size{
+  font-size: 30px;
+  color: #5A5A5A;
+}
+.mp{
+  padding: 10px 70px 10px 70px;
+}
+
+.co_pding{
+  padding: 50px 10px 50px 10px;
+}
+
+.boder{
+  border: none;
+}
+
+.trnding_pduct_pding{
+  padding-bottom: 20px ;
+
+}
+
+.ft_search_pading{
+  padding-top: 20px;
+}
+
+</style>
+<script>
+
+
+</script>
+
+</head>
+<body>
+    
+
+   <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center" style="background-color: #5A5A5A";>
+    <div class="container d-flex align-items-center justify-content-between ">
+
+      <a href="#" class="logo d-flex align-items-center me-auto me-lg-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+         <img src="img/logo_2.png" alt="">
+        <!--<h1>Yummy<span>.</span></h1> -->
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+        
+          <li class="dropdown"><a href="#"><span>Mattress</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown"><a href="#"><span>Pillow</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown"><a href="#"><span>Offers</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li>
+          <li><a href="#gallery">Blogs</a></li>
+          <li><a href="#contact">contact</a></li>
+        </ul>
+      </nav><!-- .navbar -->
+
+      <a class="btn-book-a-table" href="#book-a-table"><i class="fa-solid fa-cart-shopping"></i>        Login | Sign up</a>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+  </header><!-- End Header -->
+
+
+
+
+
+
+  <div class="container-fluid ag">
+  <div class="container">
+  <div class="row justify-content-between ">
+    <div class="col-lg-4 col-md-6 col-sm-4 ">
+      <div class="row">
+        <div class="col-lg-6 col-md-2 col-sm-2 p-2 mt-1  text-white"><img src="img/Frame_4.jpg" alt=""></div>
+        <div class="col-lg-6 col-md-2 col-sm-2 pt-4 mt-1  text-black"> <b>New Year</b></div>
+    </div>
+    </div> 
+    <div class="col-lg-6 col-md-6 col-sm-6 pt-4 text-end">
+      <button type="button" class="btn btn-danger float-end">SHOP NOW</button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+<div class="container-fluid p-0 mt-3">
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img/banner_1.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="img/banner_02.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="img/banner_03.jpg" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+
+
+
+  <div class="container-fluid mt-3">
+    <div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col ">
+        <div class="card h-80 dp_swd">
+          <img src="img/product_1.jpg" class="card-img-top" alt="...">
+          <div class="card-body text-center">
+            <h5 class="card-title">Cloud Pillow (Gel Memory)</h5>
+            <button type="button" class="btn btn-light dp_swd">Shop Now</button>
+          </div>
+          
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 dp_swd">
+          <img src="img/product_2.jpg" class="card-img-top" alt="...">
+          <div class="card-body text-center">
+            <h5 class="card-title">Sensation Mattress (Latex Memory)</h5>
+            <button type="button" class="btn btn-light dp_swd">Shop Now</button>
+          </div>
+          
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 dp_swd">
+          <img src="img/product_1.jpg" class="card-img-top" alt="...">
+          <div class="card-body text-center">
+            <h5 class="card-title">Card title</h5>
+            <button type="button" class="btn btn-light dp_swd">Shop Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+  <div class="container-fluid mt-3 dp_swd">
+  <div class="container co_pding">
+  <div class="card mb-3 boder" >
+    <div class="row g-0">
+      <div class="col-md-6">
+        <img src="img/best_sleep_1.png" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-6">
+        <div class="card-body">
+          <h5 class="card-title ft_size"><b>Get the best sleep of your 
+            life Guaranteed.</b></h5>
+          <p class="card-text">Try it for a few nights, if you don’t love the 
+            mattress we’ll pick it up and give you a 
+            refund.</p>
+          <button type="button" class="btn btn-light dp_swd mp mt-4"><b>Try Now</b></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="container-fluid mt-3 dp_swd">
+  <div class="container co_pding">
+  <div class="card mb-3 boder" >
+    <div class="row g-0"> 
+      <div class="col-sm-12 col-md-6 ">
+        <div class="card-body">
+          <h5 class="card-title ft_size"><b>Get the best sleep of your life.</b></h5>
+          <p class="card-text">Try it for a few nights, if you don’t love the
+            mattress we’ll pick it up and give you a 
+            refund.</p>
+          <div class="row">
+              <div class="col-lg-3 col-md-4 col-sm-4 p-3 text-white"><img src="img/best_sleep_21.png" alt="..."></div>
+              <div class="col-lg-2 col-md-4 col-sm-4 p-3 text-white"><img src="img/best_sleep_22.png" alt="..."></div>
+          </div>
+          <button type="button" class="btn btn-light dp_swd mp mt-4"><b>Try Tilitso for 100 Days</b></button>
+        </div>
+      </div>
+      <div class="col-md-6 text-end">
+        <img src="img/best_sleep_2.png" class="img-fluid rounded-start float-end" alt="...">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div class="container-fluid dp_swd mt-3">
+  <div class="container co_pding">
+    <h2 class="text-center ft_size trnding_pduct_pding"><b>Trending Products</b></h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col ">
+      <div class="card h-80 dp_swd">
+        <img src="img/product_1.jpg" class="card-img-top" alt="...">
+        <div class="card-body text-center">
+          <h5 class="card-title">Cloud Pillow (Gel Memory)</h5>
+          
+        </div>
+        
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100 dp_swd">
+        <img src="img/product_2.jpg" class="card-img-top" alt="...">
+        <div class="card-body text-center">
+          <h5 class="card-title">Sensation Mattress (Latex Memory)</h5>
+          
+        </div>
+        
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100 dp_swd">
+        <img src="img/product_1.jpg" class="card-img-top" alt="...">
+        <div class="card-body text-center">
+          <h5 class="card-title">Cloud Mattress</h5>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+<div class="container-fluid dp_swd mt-3">
+  <div class="container co_pding">
+
+
+<!-- Carousel wrapper -->
+<div id="carouselExampleControls2" class="carousel slide text-center carousel-dark" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="rounded-circle shadow-1-strong mb-4"
+        src="img/testimonial_1.png" alt="avatar"
+        style="width: 150px;" >
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h5 class="mb-3">Maria Kate</h5>
+          <p>Photographer</p>
+          <p class="text-muted">
+            <i class="fas fa-quote-left pe-2"></i>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus et deleniti
+            nesciunt sint eligendi reprehenderit reiciendis, quibusdam illo, beatae quia
+            fugit consequatur laudantium velit magnam error. Consectetur distinctio fugit
+            doloremque.
+          </p>
+        </div>
+      </div>
+      <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
+        <li><i class="fas fa-star fa-sm"></i></li>
+        <li><i class="fas fa-star fa-sm"></i></li>
+        <li><i class="fas fa-star fa-sm"></i></li>
+        <li><i class="fas fa-star fa-sm"></i></li>
+        <li><i class="far fa-star fa-sm"></i></li>
+      </ul>
+    </div>
+
+
+    <div class="carousel-item">
+      <img class="rounded-circle shadow-1-strong mb-4"
+        src="img/testimonial_2.png" alt="avatar"
+        style="width: 150px;" >
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h5 class="mb-3">John Doe</h5>
+          <p>Web Developer</p>
+          <p class="text-muted">
+            <i class="fas fa-quote-left pe-2"></i>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus et deleniti
+            nesciunt sint eligendi reprehenderit reiciendis, quibusdam illo, beatae quia
+            fugit consequatur laudantium velit magnam error. Consectetur distinctio fugit
+            doloremque.
+          </p>
+        </div>
+      </div>
+      <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
+        <li><i class="fas fa-star fa-sm"></i></li>
+        <li><i class="fas fa-star fa-sm"></i></li>
+        <li><i class="fas fa-star fa-sm"></i></li>
+        <li><i class="fas fa-star fa-sm"></i></li>
+        <li><i class="far fa-star fa-sm"></i></li>
+      </ul>
+    </div>
+    <div class="carousel-item">
+      <img class="rounded-circle shadow-1-strong mb-4"
+        src="img/testimonial_3.png" alt="avatar" style="width: 150px;" >
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h5 class="mb-3">Anna Deynah</h5>
+          <p>UX Designer</p>
+          <p class="text-muted">
+            <i class="fas fa-quote-left pe-2"></i>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus et deleniti
+            nesciunt sint eligendi reprehenderit reiciendis, quibusdam illo, beatae quia
+            fugit consequatur laudantium velit magnam error. Consectetur distinctio fugit
+            doloremque.
+          </p>
+        </div>
+      </div>
+      <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
+        <li><i class="fas fa-star fa-sm"></i></li>
+        <li><i class="fas fa-star fa-sm"></i></li>
+        <li><i class="fas fa-star fa-sm"></i></li>
+        <li><i class="fas fa-star fa-sm"></i></li>
+        <li><i class="far fa-star fa-sm"></i></li>
+      </ul>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls2"
+    data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls2"
+    data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<!-- Carousel wrapper -->
+</div>
+</div>
+
+
+ 
+<footer class="container-fluid text-center text-lg-start text-white dp_swd mt-3" style="background-color: #4B5563;">
+  
+  <section class="d-flex justify-content-center justify-content-lg-between p-2 pt-4 border-bottom container">
+   
+    <div class="row ">
+    <div class="col-lg-6 col-md-6 ">
+    <div class="me-5">
+      <span><h1>Know it all first!</h1></span>
+      <p>Never Miss Anything From us By Signing 
+        Up To Our Newsletter.</p>
+    </div>
+  </div>
+    
+  <div class="col-lg-6 col-md-6 ">
+    <div class="ft_search_pading"> 
+          <form class="d-flex " role="search">
+            <input class="form-control me-2 p-3 " type="search" placeholder="Search" aria-label="Search">
+            <button type="button" class="btn btn-primary ">SUBSCRIBE</button>
+          </form>
+      
+    </div>
+    </div>
+  </div>
+   
+  </section>
+<!-- Footer
+  <div class="container-fluid">
+    <div class="container pt-2  border-bottom">
+    <div class="row justify-content-between ">
+      <div class="col-lg-6">
+        <div class="row">
+          
+          <div class="col-lg-12 col-md-4 col-sm-6 pt-4 mt-1"> <span><h1>Know it all first!</h1></span>
+            <p>Never Miss Anything From us By Signing 
+              Up To Our Newsletter.</p></div>
+      </div>
+      </div>
+      
+      <div class=" col-lg-6 pt-4 text-end">
+        <div class="row ">
+          <div class="col-lg-6 col-md-4 col-sm-6 p-2 mt-1  text-white"><input class="form-control me-2 p-3 float-end" type="search" placeholder="Search" aria-label="Search"></div>
+          <div class="col-lg-6 col-md-4 col-sm-6 pt-4 mt-1  text-black"><button type="button" class="btn btn-primary float-end">SUBSCRIBE</button></div>
+      </div>
+      </div>
+    </div>
+  </div>
+  </div>
+-->
+
+
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section>
+    <div class="container text-center text-md-start mt-5 border-bottom">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-lg-3 col-md-3 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Company name
+          </h6>
+          <p>
+            Here you can use rows and columns to organize your footer content. Lorem ipsum
+            dolor sit amet, consectetur adipisicing elit.
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-lg-3 col-md-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Products
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Cloud Pillow (Gel Memory)</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Sensation Mattress (Latex Memory)</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Cloud Mattress</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Cloud Mattress (Gel Infused Memory Mattress)</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Spring Offer</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-3 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Quick links
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">our Story</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Privacy Policy</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Help Center</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Terms And Conditions</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Return Policy</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            info@example.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+ 
+  <section class="d-flex justify-content-center justify-content-lg-between p-4  container" >
+    <!-- Left -->
+    <div class="text-center ">
+      © 2021 Copyright:
+      <a class="text-reset fw-bold" href="#"> Tilitso. All Rights Reserved.</a>
+    </div>
+    <!-- Left -->
+
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+</footer>
+<!-- Footer -->
+
+
+
+
+</body>
+</html>
